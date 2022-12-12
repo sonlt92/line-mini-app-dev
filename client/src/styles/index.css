@@ -1,0 +1,45 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+/* Variable */
+@import url('./variable.css');
+
+/* Reset */
+@import url('./reset.css');
+
+/* Components style */
+@import url('../components/CarModal/style.css');
+@import url('../components/SelectionService/style.css');
+@import url('../components/Navbar/style.css');
+@import url('../components/Button/style.css');
+@import url('../components/NearBy/style.css');
+@import url('../components/TextArea/style.css');
+@import url('../components/Header/styles.css');
+@import url('../components/CardHorizontal/style.css');
+@import url('../components/GasStation/style.css');
+@import url('../components/MyPage/style.css');
+
+/* COMMON STYLE */
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+.btn-google {
+  background-color: #ea4335;
+}
+
+.btn-google:hover {
+  opacity: 0.8;
+  background-color: #ea4335;
+}
+
+.btn-line {
+  background-color: #00b900;
+}
+
+.btn-line:hover {
+  background-color: #00b900;
+  opacity: 0.8;
+}

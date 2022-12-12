@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
+    "paths": {
+      "@*": ["./*"]
+    }
+  },
+  "include": ["src", "api/DB.js", "api/User.js", "api/index.js", "api"],
+  // "include": [
+  //   "src",
+  //   "gitec-line-app/server/model/db.js",
+  //   "gitec-line-app/server/model/user.js",
+  //   "gitec-line-app/server/model/index.js",
+  //   "gitec-line-app/server"
+  // ],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
