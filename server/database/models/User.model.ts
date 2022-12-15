@@ -1,13 +1,6 @@
 import { Schema, model, Document } from 'mongoose'
+import IUser from '../../types/user'
 
-export default interface User extends Document {
-  userId: String,
-  name: String,
-  furigana: String,
-  address: String,
-  phoneNumber: String,
-  createAt?: Date,
-}
 
 const UserSchema: Schema = new Schema({
   userId: {
@@ -33,4 +26,4 @@ const UserSchema: Schema = new Schema({
   },
 })
 
-export const UserModel = model<User>('User', UserSchema)
+export const UserModel = model<IUser>('User', UserSchema)
