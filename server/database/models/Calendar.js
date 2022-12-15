@@ -7,21 +7,21 @@ const CalendarSchema = new Schema({
     require: true,
     unique: true,
   },
-  startDateTime: {
+  title:{
+    type: String,
+  },
+  start: {
     type: Date,
   },
-  endDateTime: {
+  end: {
     type: Date,
   },
   status: {
     type: String,
   },
-  allDate: {
+  allDay: {
     type: Boolean,
-  },
-  userId: {
-    type: String,
-  },
+  },  
   createAt: {
     type: Date,
     default: Date.now,
@@ -33,8 +33,19 @@ const CalendarSchema = new Schema({
     type: Date,
   },
   gasStationId: {
-    type: Number,
+    type: Schema.Types.ObjectId,
+    ref: 'GasStation'
   },
+  color:{
+    type: String,
+  },
+  note:{
+    type: String,
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
 })
 
 module.exports = mongoose.model('Calendar', CalendarSchema)
