@@ -1,10 +1,11 @@
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import express from 'express'
+import moment from 'moment-timezone'
 import morgan from 'morgan'
 
 import './config/database'
-import router from './routes/userRouter'
+import routes from './routes'
 
 const app = express()
 
@@ -21,7 +22,7 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/api', router)
+app.use('/api', routes)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {

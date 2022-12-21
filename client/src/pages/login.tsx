@@ -1,7 +1,7 @@
 // Lib
 import { useEffect, useState } from 'react'
 import liff from '@line/liff'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 import axios from 'axios'
 
@@ -21,8 +21,8 @@ const initialValues: IAccount = {
 interface Profile {
   userId: string
   displayName: string
-  pictureUrl?: string
-  statusMessage?: string
+  // pictureUrl?: string
+  // statusMessage?: string
 }
 
 function Login() {
@@ -72,9 +72,16 @@ function Login() {
   }
 
   if (profile.userId !== undefined) {
-    liff.getProfile()
-    console.log(profile.userId)
-
+    // liff.getProfile();
+    liff
+      .getProfile()
+      .then((profile) => {
+        const userId = profile.userId
+        console.log(userId)
+      })
+      .catch((err) => {
+        console.log('error', err)
+      })
     navigate('/update-info-member')
   }
 
@@ -103,7 +110,7 @@ function Login() {
       onSubmit={(values, { setSubmitting }) => {
         console.log(values)
         axios
-          .post('http://localhost:4000/accounts/add', values)
+          .post('http://publicdomain.cybercore.co.jp/api/user', values)
           .then((res) => console.log(res.data))
         setSubmitting(false)
       }}
@@ -114,14 +121,14 @@ function Login() {
             <div className='col-sm-9 col-md-7 col-lg-5 mx-auto'>
               <div className='card border-0 shadow rounded-3 my-5'>
                 <div className='card-body p-4 p-sm-5'>
-                  <h2 className='text-center mb-5'>Sign In</h2>
+                  <h2 className='text-center mb-5'>ログイン</h2>
                   <Form>
                     <div className='mb-4'>
                       <Input
                         onChange={handleChange}
                         id='username'
                         name='username'
-                        label='Username '
+                        label='ユ ー ザ ー '
                         type='text'
                         errorMessage={errors.username}
                       />
@@ -131,7 +138,7 @@ function Login() {
                         onChange={handleChange}
                         id='password'
                         name='password'
-                        label='Password'
+                        label='パスワード'
                         type='password'
                         errorMessage={errors.password}
                       />
@@ -144,8 +151,13 @@ function Login() {
                         id='rememberPasswordCheck'
                       />
                       <label className='htmlForm-check-label' htmlFor='rememberPasswordCheck'>
-                        Remember password
+                        パスワードを覚える
                       </label>
+                      <Link to='/register-member'>
+                        <a className='register' href=''>
+                          登録する
+                        </a>
+                      </Link>
                     </div>
                     <div className='d-grid'>
                       {isSubmitting ? (
@@ -162,7 +174,7 @@ function Login() {
                           className='btn btn-primary btn-login text-uppercase fw-bold'
                           type='submit'
                         >
-                          Sign in
+                          サインイン
                         </button>
                       )}
                     </div>
@@ -172,7 +184,7 @@ function Login() {
                         className='btn btn-google btn-login text-uppercase fw-bold'
                         type='button'
                       >
-                        <i className='fab fa-google me-2'></i> Sign in with Google
+                        <i className='fab fa-google me-2'></i> Google でログイン
                       </button>
                     </div>
                     <div className='d-grid'>
@@ -181,7 +193,7 @@ function Login() {
                         type='button'
                         onClick={login}
                       >
-                        <i className='fab fa-facebook-f me-2'></i> Sign in with Line
+                        <i className='fab fa-facebook-f me-2'></i> Line でログイン
                       </button>
                     </div>
                   </Form>
